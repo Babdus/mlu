@@ -7,7 +7,7 @@ def transliterate_file(file_path, rules_path):
     dictionary = df.georgian.to_dict()
     longest_symbol = max(dictionary.keys(), key=len)
 
-    with open(file_path, 'r') as f:
+    with open(file_path, 'r', encoding='utf-8') as f:
         latin_text = f.read()
     
     georgian_text = ''
@@ -29,7 +29,7 @@ def transliterate_file(file_path, rules_path):
             i += symbol_length
             break
 
-    with open(f'{".".join(file_path.split(".")[:-1])}_ka.txt', 'w') as f:
+    with open(f'{".".join(file_path.split(".")[:-1])}_ka.txt', 'w', encoding='utf-8') as f:
         f.write(georgian_text)
 
 
