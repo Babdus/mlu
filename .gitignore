@@ -1,6 +1,4 @@
 *.cha
+*.cex
 __pycache__/
 .ipynb_checkpoints/
-.toml
-.lock
-*.frq.cex
