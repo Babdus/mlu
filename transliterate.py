@@ -1,57 +1,63 @@
 import sys
+import re
 import pandas as pd
-from typing import List, Union
 
 
-def transliterate_word(filtered_word: List[List[Union[str, bool]]]) -> str:
-    new_word = ''
-    for part, is_transliterable in filtered_word:
-        new_word += transliterate(part) if is_transliterable else part
-    return new_word
+def subsplit(mask, pattern, n_delimiter_groups=1):
+    new_mask = []
+    for group, status in mask:
+        split = re.split(pattern, group)
+        submask = [(subgroup, status and i%(n_delimiter_groups+1)==0) for i, subgroup in enumerate(split)]
+        new_mask += submask
+    return new_mask
 
 
-def filter_word(word: str) -> List[List[Union[str, bool]]]:
-    is_transliterable = True
-    i = 0
-    parts = [['', True]]
-    while is_transliterable and i < len(word):
-        if word[i] in {'@', '&'}:
-            is_transliterable = False
-            parts.append([word[i:], False])
+def split_line_into_transliterable_and_not(line):
+    split = re.split(r'(<)([a-z\'\s@\[\]:]*)(>\[[a-zA-Z0-9\'_\s]*\])', line)
+    mask = [(group, i%2==0) for i, group in enumerate(split)]
+
+    mask = subsplit(mask, pattern=r'(@[a-z\'])([^a-z\']|$)', n_delimiter_groups=2)
+    mask = subsplit(mask, pattern=r'(^|\s)(\&.*[a-z\']+)([^a-z\']|$)', n_delimiter_groups=3)
+    mask = subsplit(mask, pattern=r'(xxx|www)')
+    mask = subsplit(mask, pattern=r'([^a-z\'])')
+
+    mask = [group for group in mask if len(group[0]) > 0]
+
+    new_mask = []
+    for group, status in mask:
+        if len(new_mask) > 0 and new_mask[-1][1] == status:
+            new_mask[-1] = (new_mask[-1][0] + group, status)
         else:
-            parts[0][0] += word[i]
-        i += 1
-    return parts
+            new_mask.append((group, status))
+    
+    return new_mask
 
 
 def transliterate_line(line: str) -> str:
     try:
         key, value = line.split(':\t')
         if key.startswith('*'):
-            words = value.split(' ')
-            new_words = [transliterate_word(filter_word(word)) for word in words]
-            value = ' '.join(new_words)
-        new_line = f'{key}:\t{value}'
+            part_tuples = split_line_into_transliterable_and_not(value)
+            
+            new_parts = [transliterate(part_tuple[0]) if part_tuple[1] else part_tuple[0] for part_tuple in part_tuples]
+            line += f'\n%kat:\t{"".join(new_parts)}'
     except ValueError:
-        new_line = line
-    return new_line
+        pass
+    return line
 
 
-def transliterate_chat_file(file_path: str) -> None:
-    with open(file_path, 'r', encoding='utf-8') as f:
-        text = f.read()
+def transliterate_chat_file(text: str) -> None:
     
     text = text.replace('\n\t', ' ')
     text_lines = text.split('\n')
     new_lines = [transliterate_line(line) for line in text_lines]
     new_text = '\n'.join(new_lines)
      
-    with open('test.cha', 'w', encoding='utf-8') as f:
-        f.write(new_text)
+    return new_text
 
 
 def transliterate(utterance):
-    rules_path = sys.argv[2]
+    rules_path = 'transliteration_rules.csv'
     df = pd.read_csv(rules_path, index_col='latin')
     dictionary = df.georgian.to_dict()
     longest_symbol = max(dictionary.keys(), key=len)
