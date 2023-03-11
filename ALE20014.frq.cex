@@ -1,0 +1,199 @@
+freq +t*CHI +f ALE20014.cha
+Sat Mar 11 14:36:06 2023
+freq (24-Feb-2023) is conducting analyses on:
+  ONLY speaker main tiers matching: *CHI;
+****************************************
+From file <ALE20014.cha>
+Speaker: *CHI:
+ 13 a@l
+  1 aashene
+  4 ah@k
+  4 aha
+ 67 ai
+  1 aighe
+  9 ak
+  2 aka
+  1 akvs
+  1 al@k
+  1 ala
+  1 am
+  6 amas
+  1 amc'e
+  2 ami@k
+  1 amis
+  1 amisi
+  3 amisia
+  9 amit
+ 19 ar
+ 41 ara
+ 23 aris
+  2 ase
+  1 asi@k
+  1 ato@k
+  1 au@k
+  3 av@k
+  1 ava
+  2 avac'q've
+ 19 avad
+  1 avashene
+  1 avighe
+  1 axla
+  1 ba
+  5 babax@k
+  3 bax@k
+  3 burti
+  1 chamovida
+  1 chavrtav
+  1 chkara
+  3 cot'a
+  3 da@k
+  1 daa@k
+  1 daaxure
+  2 daaxuro
+  1 dadis
+  3 dak'et'e
+  2 dana
+  1 davde
+  1 de@k
+  3 dgas
+  1 didi
+  1 dinozavri
+  1 du@k
+  3 duc@k
+  1 e@l
+  1 egre
+  1 ei@k
+ 28 es
+  2 esa
+  8 ese
+  4 ga@k
+  3 gaaghe
+  1 gaak'ete
+  1 gai@k
+  1 gakvs
+  1 gavik'eteb
+  1 giq'ida
+  1 givim
+  3 ha@k
+  1 hi@k
+ 46 ho
+  2 i@i
+  8 i@l
+  3 ih@k
+  1 ik
+  1 imisi
+  2 imisia
+  3 iq'o
+  3 iq'os
+  1 is
+  1 k'argad
+  1 k'argi
+  2 k'at'i
+  9 k'i
+  4 k'idev
+  1 k'idevaa
+  1 kvishashi
+  1 la@k
+  1 m@l
+  4 mak'rat'eli
+  1 makvs
+  1 mama
+  1 mamam
+  1 mankana
+  4 mat'arebeli
+ 40 me
+  1 mere
+  2 mich'iravs
+  1 mida
+ 10 midi
+  3 mik'etia
+  9 minda
+  4 mo@k
+  1 moa@k
+ 11 momeci
+  1 mosdzvra
+  3 mot'o
+  3 mouxvia
+  2 muceli
+  1 mucelze
+  2 nc'
+  3 nela
+  3 nemsi
+  1 o@l
+  1 ori
+  1 p'iri
+  3 p'irshi
+  1 pe@k
+  1 pexze
+  3 piso
+  1 pisoa
+  2 q'ochagh@i
+  1 q'oti@k
+  1 risaa
+  1 sa@k
+  7 sad
+  1 saxli
+  2 shavi
+  2 she@k
+  3 shech'ame
+  1 shedi@k
+  3 shen
+  1 sheni
+ 10 shexede
+  1 sicxe
+  1 tak'oze
+  1 tetri
+  2 ui@i
+  2 uk've
+  2 unda
+  3 uq'ure
+  5 va@k
+  1 vac'q'ob
+  2 vava
+  1 ve@k
+  2 vedzeb
+  1 ver
+  2 vera
+  2 vici
+  1 vin
+  3 vkeni
+  1 vuvu@k
+  1 xato
+  5 xatuna
+  1 xatunas
+  1 xeli
+  2 xelshi
+  1 xelze
+  2 xerxi
+  6 xo
+  2 xuti
+------------------------------
+  162  Total number of different item types used
+  648  Total number of items (tokens)
+0.250  Type/Token ratio
+    This TTR number was not calculated on the basis of %mor line forms.
+    If you want a TTR based on lemmas, run FREQ on the %mor line
+    with option: +sm;*,o%
+
+Speaker: *CHI2:
+  2 aha
+  1 ai
+  1 ameebit
+  1 au@i
+  3 c'amodi
+  2 dach'eri
+  1 dsh@k
+  1 e@l
+  4 kvishashi
+  1 naxe
+  4 sandre
+  1 shen
+  1 tamashob
+------------------------------
+   13  Total number of different item types used
+   23  Total number of items (tokens)
+0.565  Type/Token ratio
+    This TTR number was not calculated on the basis of %mor line forms.
+    If you want a TTR based on lemmas, run FREQ on the %mor line
+    with option: +sm;*,o%
+

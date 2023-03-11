@@ -85,4 +85,8 @@ def transliterate(utterance):
 
 
 if __name__ == '__main__':
-    transliterate_chat_file(sys.argv[1])
+    with open(sys.argv[1], 'r') as f:
+        text = f.read()
+    new_text = transliterate_chat_file(text)
+    with open('kat_'+sys.argv[1], 'w') as f:
+        f.write(new_text)
